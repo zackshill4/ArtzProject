@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARTZ // SYSTEM TERMINAL</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="shell">
+<header class="topbar">
+<div class="brand"><div class="brand-mark">A</div><div><div class="brand-name">ARTZ</div><div class="brand-sub">DARK FANTASY OPERATING INTERFACE</div></div></div>
+<div class="top-status"><span class="dot"></span><span>SYSTEM ONLINE</span><span class="sep">|</span><span id="clock">00:00:00</span></div>
+</header>
+<section class="hero-grid">
+<aside class="side-panel panel">
+<div class="panel-title"><span>PROFILE</span><span>01</span></div>
+<div class="avatar"><div class="avatar-ring"></div><div class="avatar-letter">A</div></div>
+<h1>ARTZ</h1><p class="muted">PROTAGONIST // OPERATOR</p>
+<div class="stats"><div><span>LEVEL</span><b>27</b></div><div><span>CLASS</span><b>VOID WARDEN</b></div><div><span>STATUS</span><b class="live">ACTIVE</b></div></div>
+<div class="meter"><div class="meter-label"><span>SYNC</span><span>87%</span></div><div class="track"><i style="width:87%"></i></div></div>
+<div class="meter"><div class="meter-label"><span>CORE</span><span>64%</span></div><div class="track"><i style="width:64%"></i></div></div>
+</aside>
+<section class="terminal panel">
+<div class="terminal-head"><div><span class="eyebrow">ARTZ / COMMAND NODE</span><strong>FSOCIETY TERMINAL</strong></div><div class="terminal-code">NODE-ARTZ-01</div></div>
+<div class="terminal-body" id="terminal">
+<div class="line dim">[22:50:01] Initializing ARTZ command interface...</div>
+<div class="line">[22:50:02] Identity verified: <b>ARTZ</b></div>
+<div class="line">[22:50:03] Loading dark-fantasy world state...</div>
+<div class="line ok">[22:50:04] All core systems operational.</div>
+<div class="line blank"></div><div class="line accent">&gt; Type <b>help</b> to display available commands.</div>
+</div>
+<form id="command-form" class="command"><span>&gt;</span><input id="command-input" autocomplete="off" spellcheck="false" placeholder="enter command..."></form>
+</section>
+<aside class="right-panel panel">
+<div class="panel-title"><span>WORLD STATE</span><span>02</span></div>
+<div class="world-image"><div class="city-grid"></div><div class="world-label">SECTOR // NOCTIS</div></div>
+<div class="state-row"><span>THREAT</span><b class="danger">ELEVATED</b></div><div class="state-row"><span>REGION</span><b>NOCTIS</b></div><div class="state-row"><span>QUESTS</span><b>04 ACTIVE</b></div><div class="state-row"><span>SYNC</span><b>ONLINE</b></div>
+</aside>
+</section>
+<section class="bottom-grid">
+<div class="panel mini"><div class="panel-title"><span>MISSION</span><span>03</span></div><div class="mission-title">THE VEIL IS OPEN</div><p>Investigate the corrupted gate beneath the old fortress.</p><div class="progress"><i style="width:72%"></i></div><div class="mini-footer"><span>72% COMPLETE</span><span>REWARD: 1,250 XP</span></div></div>
+<div class="panel mini"><div class="panel-title"><span>NETWORK</span><span>04</span></div><div class="nodes"><span class="node active"></span><span></span><span></span><span></span><span class="node active"></span></div><div class="mini-footer"><span>5 NODES</span><span class="ok">STABLE</span></div></div>
+<div class="panel mini"><div class="panel-title"><span>LOADOUT</span><span>05</span></div><div class="loadout"><b>VOID EDGE</b><span>EPIC</span></div><div class="loadout"><b>BLACK VEIL</b><span>RARE</span></div><div class="loadout"><b>AEGIS CORE</b><span>UNIQUE</span></div></div>
+</section>
+<footer><span>ARTZ PROJECT // COMMAND INTERFACE</span><span>BUILD 0.1.0 • LOCAL NODE</span></footer>
+</main><script src="app.js"></script>
+</body></html>

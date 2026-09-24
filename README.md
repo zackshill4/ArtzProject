@@ -1,35 +1,63 @@
-# ARTZ Terminal Toolkit
+# OS#NT$
 
-Local terminal toolkit for Termux, Windows Terminal, and Linux.
+Public-data OSINT CLI for Termux, Windows, and Linux. The OSINT module is encrypted in `OSNT.py.enc`.
 
-## Commands
-- `base64` encode/decode
-- `enc` SHA-256 digest
-- `deobfuscated` safely unescape text; never executes input
-- `string` extract quoted strings
-- `check-ip` simulated IP profile
-- `check-address` simulated fictional address
-- `check-device` simulated device profile with a non-identifying series code
+## What it does
 
-The three check commands are explicitly simulated and do not query real location, network, or device-fingerprint data.
+`OS#NT$` collects publicly available technical metadata for a domain or URL:
+- DNS/IP resolution
+- HTTP response metadata and headers
+- TLS certificate metadata
+- RDAP domain data
+- Certificate-Transparency names from crt.sh
 
-## Usage
-```bash
-python artz.py --help
-python artz.py base64 "ARTZ"
-python artz.py base64 "QVJUWg==" --decode
-python artz.py enc "ARTZ"
-python artz.py deobfuscated "\\x41\\x52\\x54\\x5a"
-python artz.py string 'name="ARTZ" mode="terminal"'
-python artz.py check-ip
-python artz.py check-address
-python artz.py check-device
-```
+Use it only on domains/systems you are authorized to inspect and respect applicable laws and service terms.
 
-Windows: `run_artz.bat check-device`
+## Termux
 
-Termux/Linux:
+Install Python, OpenSSL, and the Python HTTP dependency:
+
 ```sh
-chmod +x run_artz.sh
-./run_artz.sh check-device
+pkg update
+pkg install python openssl
+python -m pip install requests
 ```
+
+Decrypt the source using the password supplied separately:
+
+```sh
+export OSNT_PASSWORD='YOUR_PASSWORD'
+base64 -d OSNT.py.enc | openssl enc -d -aes-256-cbc -pbkdf2 -pass env:OSNT_PASSWORD > osnt.py
+python osnt.py --help
+python osnt.py example.com
+python osnt.py example.com --json
+```
+
+## Windows
+
+Install Python and OpenSSL, then install the dependency:
+
+```powershell
+py -m pip install requests
+$env:OSNT_PASSWORD='YOUR_PASSWORD'
+```
+
+Decrypt:
+
+```powershell
+[IO.File]::WriteAllBytes('OSNT.bin',[Convert]::FromBase64String((Get-Content -Raw .\OSNT.py.enc)))
+openssl enc -d -aes-256-cbc -pbkdf2 -in OSNT.bin -out osnt.py -pass env:OSNT_PASSWORD
+py osnt.py --help
+py osnt.py example.com
+py osnt.py example.com --json
+```
+
+Delete `OSNT.bin` after decryption if you do not need it.
+
+## Existing ARTZ toolkit
+
+The original `artz.py`, `run_artz.bat`, and `run_artz.sh` remain available for the existing terminal utilities.
+
+## Encryption
+
+`OSNT.py.enc` uses OpenSSL AES-256-CBC with PBKDF2 and a random salt. The password is not stored in the repository.
